@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Genba Studio — Studio Desain &amp; Kreatif</title>
+<link rel="stylesheet" href="style.css">
+<style>
+  /* HERO */
+  .hero{position:relative; padding:76px 0 0; overflow:hidden;}
+  .hero .wrap{position:relative; z-index:2;}
+  .eyebrow{font-family:'IBM Plex Mono'; font-size:13px; color:var(--signal); margin-bottom:20px; display:flex; align-items:center; gap:10px;}
+  .eyebrow::before{content:''; width:8px; height:8px; background:var(--signal); border-radius:50%;}
+  .hero h1{font-size:clamp(46px,8vw,104px); line-height:0.94; text-transform:uppercase;}
+  .hero h1 .out{-webkit-text-stroke:1.5px var(--ink); color:var(--bg);}
+  .hero p.lede{max-width:480px; color:var(--ink-dim); font-size:16px; line-height:1.7; margin-top:28px;}
+  .hero-actions{display:flex; gap:14px; margin-top:36px; flex-wrap:wrap;}
+  .btn{display:inline-block; padding:14px 26px; font-family:'IBM Plex Mono'; font-size:13px;}
+  .btn-fill{background:var(--signal); color:var(--bg);}
+  .btn-outline{border:1px solid var(--ink);}
+
+  .hero-strip{
+    margin-top:56px; height:280px; display:grid; grid-template-columns:1.3fr 1fr 1fr 1.1fr;
+    border-top:1px solid var(--line);
+  }
+  .strip-cell{position:relative; overflow:hidden; border-right:1px solid var(--line); display:flex; align-items:flex-end; padding:16px;}
+  .strip-cell:last-child{border-right:none;}
+  .strip-cell .tag{font-family:'IBM Plex Mono'; font-size:11px; color:var(--ink); background:rgba(20,20,20,0.7); padding:4px 10px; z-index:2;}
+  .c1{background:linear-gradient(160deg,#3A2E2A,#1B1512);}
+  .c2{background:linear-gradient(160deg,#20303A,#111A1F);}
+  .c3{background:linear-gradient(160deg,#2E2618,#151107);}
+  .c4{background:var(--signal); align-items:center; justify-content:center;}
+  .c4 .display{font-size:22px; color:var(--bg); text-align:center; line-height:1.15;}
+
+  /* WORKS */
+  .idxnum{font-family:'IBM Plex Mono'; font-size:13px; color:var(--signal); border:1px solid var(--signal); padding:2px 10px;}
+  .section-head{display:flex; align-items:center; gap:16px; margin-bottom:40px;}
+  .section-head h2{font-size:32px; text-transform:uppercase;}
+  section{padding:70px 0;}
+
+  .works-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:2px; background:var(--line); border:1px solid var(--line);}
+  .work-cat{
+    background:var(--bg-soft); padding:38px 32px; position:relative; min-height:210px;
+    display:flex; flex-direction:column; justify-content:space-between;
+    transition:background .2s ease;
+  }
+  .work-cat:hover{background:#232320;}
+  .work-cat .catnum{font-family:'IBM Plex Mono'; font-size:12px; color:var(--ink-dim);}
+  .work-cat h3{font-size:26px; margin-top:18px; text-transform:uppercase;}
+  .work-cat .catdesc{color:var(--ink-dim); font-size:13.5px; margin-top:10px; max-width:320px; line-height:1.6;}
+  .work-cat .arrow{align-self:flex-end; font-family:'IBM Plex Mono'; font-size:20px; color:var(--signal); transition:transform .2s ease;}
+  .work-cat:hover .arrow{transform:translate(4px,-4px);}
+
+  /* ABOUT */
+  .about-split{display:grid; grid-template-columns:0.9fr 1.1fr; gap:56px; align-items:start;}
+  .about-split p{color:var(--ink-dim); font-size:16px; line-height:1.8; margin:0 0 18px;}
+  .about-num-grid{display:grid; grid-template-columns:1fr 1fr; gap:2px; background:var(--line); border:1px solid var(--line);}
+  .anum{background:var(--bg-soft); padding:26px;}
+  .anum .n{font-family:'Archivo Black'; font-size:34px; color:var(--signal);}
+  .anum .l{font-size:12.5px; color:var(--ink-dim); margin-top:6px; font-family:'IBM Plex Mono';}
+
+  /* JOBS / SERVICES */
+  .jobs-list{border-top:1px solid var(--line);}
+  .job-row{display:flex; justify-content:space-between; align-items:center; padding:26px 4px; border-bottom:1px solid var(--line); gap:20px;}
+  .job-row .jname{font-size:20px; font-weight:700; font-family:'Archivo';}
+  .job-row .jtags{display:flex; gap:8px; flex-wrap:wrap; justify-content:flex-end;}
+  .jtag{font-family:'IBM Plex Mono'; font-size:11px; color:var(--ink-dim); border:1px solid var(--line); padding:4px 10px;}
+
+  /* CONTACT */
+  .contact-block{border:1px solid var(--line); padding:60px 40px; text-align:center; background:var(--bg-soft);}
+  .contact-block h2{font-size:clamp(30px,5vw,52px); text-transform:uppercase; margin-bottom:16px;}
+  .contact-block p{color:var(--ink-dim); font-size:15px; margin-bottom:30px;}
+
+  @media (max-width:760px){
+    .hero-strip{grid-template-columns:1fr 1fr; height:auto;}
+    .strip-cell{height:160px;}
+    .works-grid{grid-template-columns:1fr;}
+    .about-split{grid-template-columns:1fr;}
+  }
+</style>
+</head>
+<body>
+
+<header class="site">
+  <div class="wrap">
+    <a href="index.html" class="brand"><span class="mark"></span>GENBA STUDIO</a>
+    <nav class="links">
+      <a href="index.html#works">Works</a>
+      <a href="index.html#about">About</a>
+      <a href="index.html#jobs">Jobs</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+    <a href="index.html#contact" class="nav-cta">Mulai Proyek</a>
+  </div>
+</header>
+
+<div class="marquee">
+  <div class="marquee-track">
+    <span>SOCIAL MEDIA DESIGN</span><span>—</span><span>LOGO DESIGN</span><span>—</span><span>BRANDING</span><span>—</span><span>WEB DESIGN</span><span>—</span>
+    <span>SOCIAL MEDIA DESIGN</span><span>—</span><span>LOGO DESIGN</span><span>—</span><span>BRANDING</span><span>—</span><span>WEB DESIGN</span><span>—</span>
+  </div>
+</div>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="eyebrow">STUDIO DESAIN &amp; KREATIF — PURBALINGGA, ID</div>
+    <h1>KAMI BIKIN<br>DESAIN YANG<br><span class="out">DIINGAT.</span></h1>
+    <p class="lede">Genba Studio membantu bisnis dan personal brand tampil lebih tajam lewat desain sosial media, logo, branding, dan website — dari konsep sampai hasil akhir yang siap dipakai.</p>
+    <div class="hero-actions">
+      <a href="#works" class="btn btn-fill">Lihat Karya</a>
+      <a href="#contact" class="btn btn-outline">Diskusi Proyek</a>
+    </div>
+
+    <div class="hero-strip">
+      <div class="strip-cell c1"><span class="tag">Social Media</span></div>
+      <div class="strip-cell c2"><span class="tag">Web Design</span></div>
+      <div class="strip-cell c3"><span class="tag">Branding</span></div>
+      <div class="strip-cell c4"><span class="display">GENBA<br>STUDIO</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="works">
+  <div class="wrap">
+    <div class="section-head"><span class="idxnum">01</span><h2>Works</h2></div>
+    <div class="works-grid">
+      <a class="work-cat" href="works/social-media-design.html">
+        <span class="catnum">01 / KATEGORI</span>
+        <div>
+          <h3>Social Media Design</h3>
+          <p class="catdesc">Feed Instagram, konten promo, dan materi kampanye digital yang konsisten dengan identitas brand.</p>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="work-cat" href="works/logo-design.html">
+        <span class="catnum">02 / KATEGORI</span>
+        <div>
+          <h3>Logo Design</h3>
+          <p class="catdesc">Identitas visual inti — dari eksplorasi konsep sampai logo final yang siap dipakai di semua media.</p>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="work-cat" href="works/branding.html">
+        <span class="catnum">03 / KATEGORI</span>
+        <div>
+          <h3>Branding</h3>
+          <p class="catdesc">Panduan visual menyeluruh: warna, tipografi, dan penerapan brand di berbagai touchpoint.</p>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+      <a class="work-cat" href="works/web-design.html">
+        <span class="catnum">04 / KATEGORI</span>
+        <div>
+          <h3>Web Design</h3>
+          <p class="catdesc">Website profil bisnis dan landing page, dibangun dengan struktur SEO dan tampilan yang rapi.</p>
+        </div>
+        <span class="arrow">↗</span>
+      </a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="wrap">
+    <div class="section-head"><span class="idxnum">02</span><h2>About</h2></div>
+    <div class="about-split">
+      <div class="about-num-grid">
+        <div class="anum"><div class="n">6+</div><div class="l">TAHUN PENGALAMAN</div></div>
+        <div class="anum"><div class="n">2</div><div class="l">WEBSITE KLIEN LIVE</div></div>
+        <div class="anum"><div class="n">4+</div><div class="l">TAHUN DATA &amp; SISTEM</div></div>
+        <div class="anum"><div class="n">4</div><div class="l">LAYANAN INTI</div></div>
+      </div>
+      <div>
+        <p>Genba Studio lahir dari kebiasaan turun langsung ke detail — nama "Genba" sendiri diambil dari istilah yang berarti "tempat kejadian sebenarnya": kami percaya desain yang baik lahir dari memahami masalah klien secara langsung, bukan cuma mengikuti tren.</p>
+        <p>Digawangi oleh desainer dengan lebih dari 6 tahun pengalaman lintas media — dari cetak, sosial media, sampai website — dan latar belakang teknis di pengelolaan data dan sistem, yang membuat setiap proyek dikerjakan dengan pertimbangan visual sekaligus fungsional.</p>
+        <p>Setiap proyek dimulai dari mendengarkan tujuan klien, bukan dari template siap pakai.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="jobs">
+  <div class="wrap">
+    <div class="section-head"><span class="idxnum">03</span><h2>Layanan</h2></div>
+    <div class="jobs-list">
+      <div class="job-row"><span class="jname">Social Media Design</span><div class="jtags"><span class="jtag">Feed</span><span class="jtag">Story</span><span class="jtag">Campaign</span></div></div>
+      <div class="job-row"><span class="jname">Logo &amp; Identitas Visual</span><div class="jtags"><span class="jtag">Logo</span><span class="jtag">Ikon</span><span class="jtag">Wordmark</span></div></div>
+      <div class="job-row"><span class="jname">Brand Guideline</span><div class="jtags"><span class="jtag">Warna</span><span class="jtag">Tipografi</span><span class="jtag">Panduan</span></div></div>
+      <div class="job-row"><span class="jname">Web Design &amp; SEO</span><div class="jtags"><span class="jtag">WordPress</span><span class="jtag">SEO</span><span class="jtag">Google Ads</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-block">
+      <h2>Punya Proyek?<br>Ayo Diskusikan.</h2>
+      <p>Terbuka untuk kerja sama lepas, proyek jangka pendek, maupun posisi tetap di bidang desain dan kreatif.</p>
+      <div class="hero-actions" style="justify-content:center;">
+        <a href="mailto:hello@genbastudio.com" class="btn btn-fill">Kirim Email</a>
+        <a href="#" class="btn btn-outline">Instagram</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="site">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <h4>Genba Studio</h4>
+        <p>Studio desain yang membantu brand tampil lebih tajam lewat karya yang jelas arahnya.</p>
+      </div>
+      <div>
+        <h4>Navigasi</h4>
+        <a href="index.html#works">Works</a><br>
+        <a href="index.html#about">About</a><br>
+        <a href="index.html#jobs">Jobs</a><br>
+        <a href="index.html#contact">Contact</a>
+      </div>
+      <div>
+        <h4>Kontak</h4>
+        <a href="mailto:hello@genbastudio.com">hello@genbastudio.com</a><br>
+        <a href="#">Instagram</a><br>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 GENBA STUDIO</span>
+      <span>PURBALINGGA, INDONESIA</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
